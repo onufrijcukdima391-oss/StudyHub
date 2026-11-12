@@ -1,0 +1,489 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Навчальний довідник</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #0b1020;
+    color: white;
+    min-height: 100vh;
+}
+
+/* Шапка */
+
+header {
+    padding: 25px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #202a40;
+    background: #10182b;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #60a5fa;
+}
+
+.logo span {
+    color: white;
+}
+
+nav a {
+    color: #b8c5dc;
+    text-decoration: none;
+    margin-left: 25px;
+    transition: 0.2s;
+}
+
+nav a:hover {
+    color: #60a5fa;
+}
+
+/* Головний блок */
+
+.hero {
+    text-align: center;
+    padding: 75px 20px 45px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.hero h1 span {
+    color: #60a5fa;
+}
+
+.hero p {
+    color: #9aaac4;
+    font-size: 16px;
+}
+
+/* Пошук */
+
+.search-area {
+    max-width: 750px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.search-box {
+    display: flex;
+    background: #17233b;
+    border: 1px solid #30415e;
+    border-radius: 14px;
+    padding: 5px;
+}
+
+.search-box input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 15px;
+    font-size: 15px;
+}
+
+.search-box button {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 0 25px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.search-box button:hover {
+    background: #2563eb;
+}
+
+/* Категорії */
+
+.categories {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 25px 20px 40px;
+}
+
+.category {
+    background: #17233b;
+    color: #b9c8df;
+    border: 1px solid #30415e;
+    padding: 11px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.category:hover,
+.category.active {
+    background: #2563eb;
+    color: white;
+    border-color: #2563eb;
+}
+
+/* Каталог */
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 25px 70px;
+}
+
+.catalog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.catalog-header h2 {
+    font-size: 25px;
+}
+
+.counter {
+    color: #8193af;
+    font-size: 14px;
+}
+
+.resources {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 22px;
+}
+
+/* Картки */
+
+.card {
+    background: #121d32;
+    border: 1px solid #263650;
+    border-radius: 18px;
+    padding: 25px;
+    transition: 0.25s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #3b82f6;
+    box-shadow: 0 10px 30px #0005;
+}
+
+.card-icon {
+    width: 55px;
+    height: 55px;
+    background: #1e3a5f;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 27px;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #9aabc4;
+    line-height: 1.5;
+    font-size: 14px;
+    min-height: 42px;
+}
+
+.tag {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 7px 12px;
+    background: #1c3454;
+    color: #60a5fa;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.card a {
+    display: block;
+    text-align: center;
+    margin-top: 22px;
+    padding: 13px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    background: #2563eb;
+    transition: 0.2s;
+    font-weight: bold;
+}
+
+.card a:hover {
+    background: #1d4ed8;
+}
+
+/* Немає результатів */
+
+.empty {
+    display: none;
+    text-align: center;
+    color: #9aabc4;
+    padding: 50px 10px;
+    grid-column: 1 / -1;
+}
+
+/* Підвал */
+
+footer {
+    border-top: 1px solid #202a40;
+    padding: 30px;
+    text-align: center;
+    color: #71829e;
+    font-size: 14px;
+}
+
+/* Телефон */
+
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    nav a {
+        margin: 0 8px;
+        font-size: 14px;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .search-box button {
+        padding: 0 13px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Study<span>Hub.</span></div>
+
+    <nav>
+        <a href="#home">Головна</a>
+        <a href="#catalog">Каталог</a>
+        <a href="#footer">Про сайт</a>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <h1>Твій <span>навчальний</span> довідник</h1>
+    <p>Знаходь корисні сайти, навчайся та розвивай свої навички.</p>
+</section>
+
+<div class="search-area">
+    <div class="search-box">
+        <input
+            type="text"
+            id="search"
+            placeholder="Знайти навчальний ресурс..."
+        >
+        <button onclick="filterResources()">Знайти</button>
+    </div>
+</div>
+
+<div class="categories">
+    <button class="category active" data-category="Усі">Усі ресурси</button>
+    <button class="category" data-category="Програмування">Програмування</button>
+    <button class="category" data-category="Навчання">Навчання</button>
+    <button class="category" data-category="Курси">Курси</button>
+    <button class="category" data-category="Мови">Мови</button>
+</div>
+
+<main class="container" id="catalog">
+
+    <div class="catalog-header">
+        <h2>Популярні ресурси</h2>
+        <span class="counter" id="counter">5 ресурсів</span>
+    </div>
+
+    <div class="resources" id="resources"></div>
+
+</main>
+
+<footer id="footer">
+    <p>StudyHub © 2026 | Навчайся та розвивайся</p>
+</footer>
+
+<script>
+
+// Дані навчальних ресурсів
+
+const resources = [
+    {
+        name: "Python.org",
+        category: "Програмування",
+        link: "https://www.python.org/",
+        description: "Офіційний сайт мови програмування Python.",
+        icon: "🐍"
+    },
+    {
+        name: "W3Schools",
+        category: "Програмування",
+        link: "https://www.w3schools.com/",
+        description: "Навчання HTML, CSS, JavaScript та Python.",
+        icon: "💻"
+    },
+    {
+        name: "Wikipedia",
+        category: "Навчання",
+        link: "https://uk.wikipedia.org/",
+        description: "Енциклопедія для пошуку корисної інформації.",
+        icon: "📚"
+    },
+    {
+        name: "Prometheus",
+        category: "Курси",
+        link: "https://prometheus.org.ua/",
+        description: "Безкоштовні онлайн-курси українською мовою.",
+        icon: "🎓"
+    },
+    {
+        name: "Duolingo",
+        category: "Мови",
+        link: "https://www.duolingo.com/",
+        description: "Вивчення іноземних мов в інтерактивному форматі.",
+        icon: "🌍"
+    }
+];
+
+let selectedCategory = "Усі";
+
+// Створення карток
+
+function showResources(list) {
+
+    const container = document.getElementById("resources");
+
+    container.innerHTML = "";
+
+    document.getElementById("counter").textContent =
+        list.length + " ресурсів";
+
+    if (list.length === 0) {
+        container.innerHTML =
+            '<div class="empty" style="display:block;">Ресурсів не знайдено 😕</div>';
+        return;
+    }
+
+    list.forEach(resource => {
+
+        const card = document.createElement("div");
+        card.className = "card";
+
+        const icon = document.createElement("div");
+        icon.className = "card-icon";
+        icon.textContent = resource.icon;
+
+        const title = document.createElement("h3");
+        title.textContent = resource.name;
+
+        const description = document.createElement("p");
+        description.textContent = resource.description;
+
+        const tag = document.createElement("span");
+        tag.className = "tag";
+        tag.textContent = resource.category;
+
+        const link = document.createElement("a");
+        link.href = resource.link;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = "Перейти на сайт ↗";
+
+        card.append(icon, title, description, tag, link);
+        container.appendChild(card);
+
+    });
+}
+
+// Пошук і фільтр
+
+function filterResources() {
+
+    const query = document
+        .getElementById("search")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const filtered = resources.filter(resource => {
+
+        const matchesName =
+            resource.name.toLowerCase().includes(query);
+
+        const matchesDescription =
+            resource.description.toLowerCase().includes(query);
+
+        const matchesCategory =
+            resource.category === selectedCategory ||
+            selectedCategory === "Усі";
+
+        return (matchesName || matchesDescription) && matchesCategory;
+
+    });
+
+    showResources(filtered);
+}
+
+// Кнопки категорій
+
+document.querySelectorAll(".category").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        document.querySelectorAll(".category").forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+        selectedCategory = button.dataset.category;
+
+        filterResources();
+
+    });
+
+});
+
+// Пошук під час введення
+
+document.getElementById("search").addEventListener("input", () => {
+    filterResources();
+});
+
+// Перший запуск
+
+showResources(resources);
+
+</script>
+
+</body>
+</html>
